@@ -21,7 +21,6 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 //build.gradle文件中直接声明的依赖项、仓库地址等信息是项目自身需要的资源。
-
 repositories {
 	maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
 }
