@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.PrdScheMapper" >
+  <resultMap id="BaseResultMap" type="com.example.entity.PrdSche" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="prd_code" property="prdCode" jdbcType="VARCHAR" />
+    <result column="scheme_id" property="schemeId" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_org" property="createOrg" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_org" property="updateOrg" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="cur_vers" property="curVers" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, prd_code, scheme_id, create_user, create_org, create_time, update_user, update_org, 
+    update_time, create_date, cur_vers
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from biz_prd_sche
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAreaAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List"/>
+    from biz_prd_sche
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from biz_prd_sche
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.PrdSche" >
+    insert into biz_prd_sche (id, prd_code, scheme_id, 
+      create_user, create_org, create_time, 
+      update_user, update_org, update_time, 
+      create_date, cur_vers)
+    values (#{id,jdbcType=VARCHAR}, #{prdCode,jdbcType=VARCHAR}, #{schemeId,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=VARCHAR}, #{createOrg,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{updateUser,jdbcType=VARCHAR}, #{updateOrg,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=VARCHAR}, #{curVers,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.PrdSche" >
+    insert into biz_prd_sche
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="prdCode != null" >
+        prd_code,
+      </if>
+      <if test="schemeId != null" >
+        scheme_id,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createOrg != null" >
+        create_org,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="updateOrg != null" >
+        update_org,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="curVers != null" >
+        cur_vers,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="prdCode != null" >
+        #{prdCode,jdbcType=VARCHAR},
+      </if>
+      <if test="schemeId != null" >
+        #{schemeId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createOrg != null" >
+        #{createOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateOrg != null" >
+        #{updateOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="curVers != null" >
+        #{curVers,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.PrdSche" >
+    update biz_prd_sche
+    <set >
+      <if test="prdCode != null" >
+        prd_code = #{prdCode,jdbcType=VARCHAR},
+      </if>
+      <if test="schemeId != null" >
+        scheme_id = #{schemeId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createOrg != null" >
+        create_org = #{createOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateOrg != null" >
+        update_org = #{updateOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="curVers != null" >
+        cur_vers = #{curVers,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.PrdSche" >
+    update biz_prd_sche
+    set prd_code = #{prdCode,jdbcType=VARCHAR},
+      scheme_id = #{schemeId,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_org = #{createOrg,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_org = #{updateOrg,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=VARCHAR},
+      cur_vers = #{curVers,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

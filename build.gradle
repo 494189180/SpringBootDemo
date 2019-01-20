@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.19.RELEASE'
+	}
+	repositories {
+		//使用国内源下载依赖
+		maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+	}
+
+	dependencies {
+		classpath ("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+//应用Java插件
+apply plugin : 'java'
+//让工程支持IDEA的导入
+apply plugin : 'idea'
+apply plugin : 'org.springframework.boot'
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+//build.gradle文件中直接声明的依赖项、仓库地址等信息是项目自身需要的资源。
+
+repositories {
+	maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies {
+	compile ('org.springframework.boot:spring-boot-starter-web')
+	testCompile ('org.springframework.boot:spring-boot-starter-test')
+	compile 'com.alibaba:druid:1.0.29'
+	compile 'mysql:mysql-connector-java:5.1.39'
+	compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.2.0'
+	//让gradle具有内置的compileOnly范围，可用于告诉gradle仅在编译期间添加lombok
+	compileOnly 'org.projectlombok:lombok:1.18.4'
+	//分页插件
+	compile 'com.github.pagehelper:pagehelper-spring-boot-starter:1.2.10'
+	//引入AOP依赖
+	compile "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"
+
+}
